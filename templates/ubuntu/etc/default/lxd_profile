@@ -1,0 +1,19 @@
+environment.http_proxy: ""
+  user:
+  config.network_mode: ""
+  user.user-data: |
+    #cloud-config
+    ssh_authorized_keys:
+     - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCarPB1uJNbBettIINZ2F7Um9CPt50XHgnUluqjKUuCtb1IIIVMFFN/yHL659X6LI0Rh6GpvHbKhVdny9gdHO37o7yibBKtjFrYlXpUm9wEax1oFPNIbdMm4PaRS2/9KVD5Eiw+4NSogylSIem9GMNbfdSWQgHxOHMac1FFWC3zqxIittawylWECmtNZ/0nnS+VhJpd+tzbq1/9/wci/Ylf5HrEfxvHxOvjQrZlNyJSOI/k9Rn7nPPJM9oIuT13hbjkiaqJ9LlFtVxl+iUiCeR5bvD891E3MT1x29Gegzbi4qUKfjNQ4yGQE6bPe4ilsTiiUD/Uk21qG7laxQWbn5RH barito
+description: Default LXD profile
+devices:
+  eth0:
+    name: eth0
+    nictype: bridged
+    parent: <%=  @network_bridge_name %>
+    type: nic
+  root:
+    path: /
+    pool: default
+    type: disk
+name: default

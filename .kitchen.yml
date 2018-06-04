@@ -1,0 +1,28 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: ubuntu-16.04
+
+suites:
+  - name: default
+    run_list:
+      - recipe[lxd_cookbook::default]
+    verifier:
+      inspec_tests:
+        - test/smoke/default
+    attributes:
+        {
+        underlay_network: '10.0.0.0/16',
+        overlay_network: '250.0.0.0/8',
+        network_bridge_name: 'fan-250',
+        register_on_sauron: 'false'
+
+        }

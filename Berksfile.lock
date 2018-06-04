@@ -1,0 +1,7 @@
+DEPENDENCIES
+  lxd_cookbook
+    path: .
+    metadata: true
+
+GRAPH
+  lxd_cookbook (0.1.0)
