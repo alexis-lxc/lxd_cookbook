@@ -5,7 +5,7 @@ describe package('ubuntu-fan') do
   it { should be_installed }
 end
 
-describe interface('fan-250') do
+describe interface('fan10') do
   it { should be_up } 
 end
 
@@ -18,7 +18,7 @@ describe file('/etc/default/lxd_profile') do
   its('owner') { should eq 'root' }
   its('group') { should eq 'root' }
   its('mode') { should cmp '0755' }
-  its('content') { should match(%r{parent: fan-250})}
+  its('content') { should match(%r{parent: fan10})}
 end
 
 describe command('sudo lxc profile list ') do
@@ -29,5 +29,5 @@ end
 
 describe command('sudo lxc profile show default ') do
   its('exit_status') { should eq 0}
-  its('stdout') { should match(%r{parent: fan-250})}
+  its('stdout') { should match(%r{parent: fan10})}
 end

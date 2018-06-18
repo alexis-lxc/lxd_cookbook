@@ -13,6 +13,10 @@ platforms:
 
 suites:
   - name: default
+    driver_config:
+      box: ubuntu/xenial64
+      network:
+        - ['private_network', {ip: '172.16.33.33'}]
     run_list:
       - recipe[lxd_cookbook::default]
     verifier:
@@ -20,9 +24,5 @@ suites:
         - test/smoke/default
     attributes:
         {
-        underlay_network: '10.0.0.0/16',
-        overlay_network: '250.0.0.0/8',
-        network_bridge_name: 'fan-250',
         register_on_sauron: 'false'
-
         }
