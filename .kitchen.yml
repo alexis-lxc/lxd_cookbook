@@ -26,3 +26,14 @@ suites:
         {
         register_on_sauron: 'false'
         }
+  - name: lxd_cluster
+    driver_config:
+      box: ubuntu/xenial64
+      hostname: lxd-cluster-01
+      network:
+        - ['private_network', {ip: '172.16.33.33'}]
+    run_list:
+      - recipe[lxd_cookbook::lxd_cluster]
+    verifier:
+      inspec_tests:
+        - test/smoke/lxd_cluster
