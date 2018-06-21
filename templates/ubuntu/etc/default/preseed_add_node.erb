@@ -6,7 +6,16 @@ cluster:
   cluster_password: <%= @lxd_cluster_password %>
   cluster_address: <%= @lxd_cluster_address %>:8443
   cluster_certificate: "<%= @lxd_cluster_certificate %>"
-networks: []
+networks:
+- name: <%= @network_bridge_name %>
+  type: bridge
+  managed: true
+  config:
+    bridge.mode: fan
+    bridge.mtu: "1400"
+    fan.overlay_subnet: <%= @overlay_network %>
+    fan.underlay_subnet: <%= @underlay_network%>
+    raw.dnsmasq: port=0
 storage_pools:
 - config: {}
   description: ""
