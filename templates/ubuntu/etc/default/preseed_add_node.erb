@@ -1,12 +1,11 @@
 config:
   core.https_address: <%= @host_ip_address %>:8443
-  core.trust_password: <%= @lxd_cluster_password %>
 cluster:
   server_name: <%= @hostname %>
   enabled: true
-  cluster_address: ""
-  cluster_certificate: <%= @lxd_cluster_certificate %>
-  cluster_password: ""
+  cluster_password: <%= @lxd_cluster_password %>
+  cluster_address: <%= @lxd_cluster_address %>:8443
+  cluster_certificate: "<%= @lxd_cluster_certificate %>"
 networks: []
 storage_pools:
 - config: {}

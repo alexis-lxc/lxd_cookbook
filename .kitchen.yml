@@ -12,20 +12,6 @@ platforms:
   - name: ubuntu-16.04
 
 suites:
-  - name: default
-    driver_config:
-      box: ubuntu/xenial64
-      network:
-        - ['private_network', {ip: '172.16.33.33'}]
-    run_list:
-      - recipe[lxd_cookbook::default]
-    verifier:
-      inspec_tests:
-        - test/smoke/default
-    attributes:
-        {
-        register_on_sauron: 'false'
-        }
   - name: lxd_cluster
     driver_config:
       box: ubuntu/xenial64
@@ -37,3 +23,24 @@ suites:
     verifier:
       inspec_tests:
         - test/smoke/lxd_cluster
+    attributes:
+        {
+          custom_ipaddress: '172.16.33.33'
+        }
+  - name: add_node_to_lxd_cluster
+    driver_config:
+      box: ubuntu/xenial64
+      hostname: lxd-cluster-02
+      network:
+        - ['private_network', {ip: '172.16.33.34'}]
+    run_list:
+      - recipe[lxd_cookbook::add_node_to_lxd_cluster]
+    verifier:
+      inspec_tests:
+        - test/smoke/add_node_to_lxd_cluster
+    attributes:
+        {
+          lxd_cluster_address: '172.16.33.33',
+          custom_ipaddress: '172.16.33.34',
+          cluster_certificate: "-----BEGIN CERTIFICATE-----\n\nMIIFfzCCA2egAwIBAgIQOtYtQ9wbBR08h/XXFW77gzANBgkqhkiG9w0BAQsFADBF\n\nMRwwGgYDVQQKExNsaW51eGNvbnRhaW5lcnMub3JnMSUwIwYDVQQDDBxyb290QGx4\n\nZC1jbHVzdGVyLXVidW50dS0xNjA0MB4XDTE4MDYyMTA3MTQyNVoXDTI4MDYxODA3\n\nMTQyNVowRTEcMBoGA1UEChMTbGludXhjb250YWluZXJzLm9yZzElMCMGA1UEAwwc\n\ncm9vdEBseGQtY2x1c3Rlci11YnVudHUtMTYwNDCCAiIwDQYJKoZIhvcNAQEBBQAD\n\nggIPADCCAgoCggIBALcNKtKHurleKq3T3Plhe+DW6Sim2m2r2wZyyuTXGUqDIOeH\n\n1l8UFVTjUcUMIQV9ME67gNG6kBV0Z3nXLrp3qwmdDMQNFCd1AS6B1oby7K6Ofs50\n\n/b10kaTBeNnWL3cTNKS+AJuBl9u/Nl8Z1gHIXgmJPIbD63EQ6e0sDzsj1VyTao/g\n\nT3BRcas9atJU/BULF/7vKna6w6enKqsYECx1kQDZpQRM4/Q4ziv5Q43wG6724MCA\n\nvghqoF0Igcn4WhjXqBrdvTmMLGgdAFho0ym8s7JaoUzgz8IHhSXGvBmN66ntEGoy\n\nYZt4MdKbIfo2jhAzWA4Cm8+OwWg9PKnwl5AHh5HKqA/4FW9vIMoQ3tvdOQrtkZPM\n\nagW5NWA0+FvkAE6U+/p6cImqwQ+c5AEaJNoRM9RMBe9MqKeeP4sHhBVuSyXYvVkW\n\n+IIt2bqHXEyBjq3EQ/w63Foeg4P/E0JlXmWjVhZFGBdeE4wHOls184j9rZzzR8OI\n\nboDJryNv/CbWoSjpXufBxo8rM8vxKjK3WRMlyeHC/OfTd2bjReEhwEouIC1VL3NZ\n\nX+faW/G7U7/Nn30dYsNTO/V1M6DoKonnewtpTnAyV468Hxpo/jDXg3/FauPxfB5l\n\noDT6aIfCGCkJw9LweX059ri/VJoeBvpja963jLLvhLEIGFUhEHfYtPEM2X8nAgMB\n\nAAGjazBpMA4GA1UdDwEB/wQEAwIFoDATBgNVHSUEDDAKBggrBgEFBQcDATAMBgNV\n\nHRMBAf8EAjAAMDQGA1UdEQQtMCuCF2x4ZC1jbHVzdGVyLXVidW50dS0xNjA0hwQK\n\nAAIPhwSsECEhhwQKISEBMA0GCSqGSIb3DQEBCwUAA4ICAQAQTaORgJBPyonTUPXB\n\ngvNN/m1JTniJnawzoLBD+6d859nTaQI2ahzwapO0kfcCvrq5LCAZhQFX1Xk2FUmI\n\nF3dblsg1vQUbhX8cGX3ZU8jGW8/qcpnIdkLt0ljKWDQSthiRFR4D11nLYpmR9ehP\n\nfLpJND04m9lE325R0X98nwM2+KBqbKOsFf3D+r8Mktnp8Wvq30MWJ9zLqZs3h4C5\n\n/IUzumlhHzQ8EVNbOS0BfU0tapnake+PPdWHlDB5m42gNHSxVkuWVKktEyuOHZAz\n\nUW0/eqo/tXgHn+FnQ1UnbtU9nhxe14Llk/UHT/GpWtNAE4v3PqcL5CQkbtbh5/2l\n\nQZqUrm5LTlEB8QvwVurXUkW1+uMRUOIcxpgJFB61K6cyyoL+x6DbVGQCRhB2h1NA\n\nJR+1MrnszKSvpClVFMjS9ZI7xEeUK9SnkAyjX1zJtyzuRo9ltrVAjum6rms6VJCN\n\nsNO12HUpq4+JOJb3y/XpvNhYlg3GKfceXgmtJsX6XxR1hXsQr8zHbYXvVvyWSjDB\n\nwWTCHg8T8pBcOk0+TfsaCIIi6SkSxN4YxhMwo/yHymJ2lgL221JnxSsp6i+UW0/V\n\n696G4x+AmK63ETpOqoES2Fs/XFLlO4bQzBjWIZ0kKjakon6DOioFv7J8jWqRURbq\n\nuoSU+Eb1VAFKzhHq8aO6DHrCVQ==\n\n-----END CERTIFICATE-----\n"
+        }

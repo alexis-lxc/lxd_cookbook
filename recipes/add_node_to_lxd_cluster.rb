@@ -3,6 +3,12 @@ if node[:register_on_sauron] == 'true' and node['sauron_url_to_regsiter_lxd_host
   fail
 end
 
+
+if node[:lxd_cluster_address].nil? || node[:lxd_cluster_certificate].nil?
+  Chef::Log.error("Required parameter missing: lxd_cluster_certificate or lxd_cluster_address")
+  fail
+end
+
 node_ipaddress = node[:custom_ipaddress].nil? ? node[:ipaddress] : node[:custom_ipaddress]
 
 apt_update
@@ -22,17 +28,18 @@ execute 'install lxd using snap' do
 end
 
 template '/etc/default/lxd_preseed.yml' do
-  source 'etc/default/preseed_first_node.erb'
+  source 'etc/default/preseed_add_node.erb'
   owner 'root'
   group 'root'
   mode '0755'
   variables(:host_ip_address =>  node_ipaddress,
             :hostname => node[:hostname],
             :lxd_cluster_password => node[:lxd_cluster_password],
+            :lxd_cluster_address => node[:lxd_cluster_address],
             :overlay_network => node[:overlay_network],
             :underlay_network => node[:underlay_network],
             :network_bridge_name => node[:network_bridge_name],
-            :ssh_authorized_key => node[:ssh_authorized_key])
+            :lxd_cluster_certificate => node[:cluster_certificate])
 end
 
 execute "sleep test" do
@@ -40,7 +47,7 @@ execute "sleep test" do
 end
 
 execute 'lxd init' do
-  command "cat /etc/default/lxd_preseed.yml | sudo lxd init --preseed"
+  command "cat /etc/default/lxd_preseed.yml | lxd init --preseed"
 end
 
 if node[:register_on_sauron] == 'true'
