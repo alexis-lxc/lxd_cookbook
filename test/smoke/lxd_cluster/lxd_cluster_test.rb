@@ -1,10 +1,6 @@
 require 'chefspec'
 require 'chefspec/berkshelf'
 
-describe package('ubuntu-fan') do
-  it { should be_installed }
-end
-
 describe interface('fan10') do
   it { should be_up } 
 end

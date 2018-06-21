@@ -7,12 +7,6 @@ node_ipaddress = node[:custom_ipaddress].nil? ? node[:ipaddress] : node[:custom_
 
 apt_update
 
-apt_package 'ubuntu-fan'
-execute 'setup fan network' do
-  command "sudo fanctl up -u #{node[:underlay_network]} -o #{node[:overlay_network]} --bridge=#{node[:network_bridge_name]} --dhcp"
-  not_if 'fanctl show | grep fan'
-end
-
 execute 'remove default lxd' do
   command "sudo apt-get purge lxd* -y"
 end

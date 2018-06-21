@@ -4,4 +4,4 @@ DEPENDENCIES
     metadata: true
 
 GRAPH
-  lxd_cookbook (0.1.0)
+  lxd_cookbook (0.1.1)
