@@ -25,7 +25,7 @@ This cookbook will enable you to setup following:
    provide the certificate of the first node.
 
 ## Manual Step in setting up a new LXD cluster
- #Context:
+### Context:
    1. In clustering mode, the LXD nodes communicate using SSL. The first
       node in the cluster generates its SSL certificate. It is a self
       signed certificate by default.
@@ -40,7 +40,8 @@ This cookbook will enable you to setup following:
       The copy that server.crt. You can access it using `lxc info` or
       `cat /var/snap/lxd/common/lxd/server.crt`. The we need a created
       string for this cert for passing it as a node attribute.
- #Steps:
+
+### Steps:
    1. ssh into first node.
    2. copy the cert `cat /var/snap/lxd/common/lxd/server.crt`.
    3. install ruby.
