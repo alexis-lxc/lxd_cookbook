@@ -26,7 +26,8 @@ template '/etc/default/lxd_preseed.yml' do
             :overlay_network => node[:overlay_network],
             :underlay_network => node[:underlay_network],
             :network_bridge_name => node[:network_bridge_name],
-            :ssh_authorized_key => node[:ssh_authorized_key])
+            :ssh_authorized_key => node[:ssh_authorized_key],
+            :dns_server => node[:dns_server])
 end
 
 execute "sleep test" do

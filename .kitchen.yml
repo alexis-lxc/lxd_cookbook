@@ -25,7 +25,8 @@ suites:
         - test/smoke/lxd_cluster
     attributes:
         {
-          custom_ipaddress: '172.16.33.33'
+          custom_ipaddress: '172.16.33.33',
+          dns_server: '172.16.200.200'
         }
   - name: add_node_to_lxd_cluster
     driver_config:
@@ -42,5 +43,6 @@ suites:
         {
           lxd_cluster_address: '172.16.33.33',
           custom_ipaddress: '172.16.33.34',
+          dns_server: '172.16.200.200',
           lxd_cluster_certificate: "-----BEGIN CERTIFICATE-----\n\nMIIFejCCA2KgAwIBAgIRALO91ge3exVokK/BRdSG9YUwDQYJKoZIhvcNAQELBQAw\n\nRTEcMBoGA1UEChMTbGludXhjb250YWluZXJzLm9yZzElMCMGA1UEAwwccm9vdEBs\n\neGQtY2x1c3Rlci11YnVudHUtMTYwNDAeFw0xODA2MjExMTM2MzNaFw0yODA2MTgx\n\nMTM2MzNaMEUxHDAaBgNVBAoTE2xpbnV4Y29udGFpbmVycy5vcmcxJTAjBgNVBAMM\n\nHHJvb3RAbHhkLWNsdXN0ZXItdWJ1bnR1LTE2MDQwggIiMA0GCSqGSIb3DQEBAQUA\n\nA4ICDwAwggIKAoICAQDF7KdhqiIUpiH42sAbqWgQ+t7DeblKLFFaaglDNR6NeN8H\n\nj0xUStRjDIiQ/m5hL13ApkR0b/kvjE/FqM+uABQnc78/ZCH2g87+ibrSBbkIfiCh\n\naq2JsfEe2QgcufCEr1mt60NF5+YRxEfIqI6HemEy4Fcp/MQGFh1WRjKvK2bsF8X4\n\n14US9eSuabrOpcUPXFhQb5273lRkcCkB/cogyKZbsal/WccIvsxTnRBj+5Y2tn/V\n\n7y4Xa2xK8BnRU3GzlqoLgy3D1+Xm+Olhow9MBgxVKECQ5djzIAmiAPn1XIqNBUSO\n\nxyw83gYteV7QB2fcahTS7/RGYoHZW949A2YuasyY9F+L2TtTk3PpSNu41UPetbwK\n\nRCDPgh5eaLWanY0maXsYRfu1slbUUhZMwdeBCvWk7k3exSmV2PCIlrxefKtxPshB\n\nKLG1aKoMBasd4YuGfgtM5eB0AuPILnrNcpgt9Gp4l5yXkhAm/hkt0GJ0je5wFyxq\n\nZ9e1YHdoBMkW8fefX+JqtKVUNQzrmDRtxrJWd//dmDhNKOfZfcoI4bgA0RYQZR2a\n\nYNM/ikpYJSv8IIy2L7AO8mlBsMPV9zBclZP9bh9eanHG7dRffxISkUNCE8OQxwJg\n\nTsmjYiaDPLK5sbvkGnFgZ80XvJZExnZ6DJlITqQqN2lFrNVzh6BcgPuo/AFrEQID\n\nAQABo2UwYzAOBgNVHQ8BAf8EBAMCBaAwEwYDVR0lBAwwCgYIKwYBBQUHAwEwDAYD\n\nVR0TAQH/BAIwADAuBgNVHREEJzAlghdseGQtY2x1c3Rlci11YnVudHUtMTYwNIcE\n\nCgACD4cErBAhITANBgkqhkiG9w0BAQsFAAOCAgEAe7ha6OP8Gy37Ex3E6rOlyauR\n\n6Cex+MhDdP7Z3lB+IYSRz46UfakE0k3XzmU9KJpoVhDrSNaQ4VUDyvEPXaha4cYa\n\nSWa+2DstVStLXN/xBfOQMpJ+NqqEr9gdTpJ5PLWXczr8YvYOERFZPfUlnOUM9V41\n\nDfMI45yB9mb+Jm63sgOGYWmgVB83xWR3Hc/1j1V9J1C5Jh7Hz8KoxUrxivZ2y1+q\n\nUl8AWY/tP6QPNYbdxMUjc/p7drQ0rTpUSJ/U8FgFE/qjtPhePwnyCVNixCo/ViDS\n\nGZKy2ccyas7GlqWh8olc58MpPetcl4cmkZ3WYmd+gjyYHSVlbQt8nPgXFqOFWw8b\n\nNSEMtpqy4VvJRvXrKkRrXrSGJGHcTJY9ZYYqf5tyclKsLZp9dNuX/lzGAHdd9ytA\n\nh62++/gZZaNdS9Rzqd94Whi954ppYHDf0PKTuerbiBnHi6pm86JBwCQUum/NZ//F\n\nl0GLWjbzCmynnnDnNWEH4/2FqEcLa5qzdl6lba9dKL6LrCxxRe+QgONwx3II50uQ\n\nzKr58pw67xh+9hoMV3xBCPpo/BSbB8Mh6zi+sIJ+5+vP1FmjSAyELXAN0Fg51Dtp\n\nxbIov6z9n5dSfQbxVF9U3eLWMHx0rgETGzTOTw0A+wcHHSWIhLfYzz23HwQNkza4\n\nSNS6PCrEwapEjcODX8w=\n\n-----END CERTIFICATE-----\n"
         }

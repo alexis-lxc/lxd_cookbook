@@ -19,3 +19,8 @@ describe command('sudo lxc cluster list') do
   its('exit_status') { should eq 0}
   its('stdout') { should match(%r{lxd-cluster})}
 end
+
+describe command('sudo lxc profile show default') do
+  its('exit_status') { should eq 0}
+  its('stdout') { should match(%r{172.16.200.200})}
+end

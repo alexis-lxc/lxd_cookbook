@@ -33,7 +33,8 @@ template '/etc/default/lxd_preseed.yml' do
             :overlay_network => node[:overlay_network],
             :underlay_network => node[:underlay_network],
             :network_bridge_name => node[:network_bridge_name],
-            :lxd_cluster_certificate => node[:lxd_cluster_certificate])
+            :lxd_cluster_certificate => node[:lxd_cluster_certificate],
+            :dns_server => node[:dns_server])
 end
 
 execute "sleep test" do

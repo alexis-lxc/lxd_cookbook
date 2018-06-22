@@ -58,8 +58,17 @@ This cookbook will enable you to setup following:
 
 
 ## How to run test locally
+Due to the nature of recipes, the tests have dependencies which are not
+automated yet. add_node_to_lxd_cluster needs a running lxd nodes before
+to join, and the certificate of that node. We have added the support for
+custom DNS server, so for running these tests we need a running bind
+server.
 
+### Steps we are following as of now
 0. You need to have ruby installed
 1. gem install bundler
-2. kitchen verify
-
+2. bundle install
+3. kitchen verify lxd-cluster-ubuntu-1604
+4. Follow the steps in MANUAL section above to copy the cert from `lxd-cluster-ubuntu-1604`
+   and paste it into .kitchen.yml lxd_cluster_certificate attribute.
+5. kitchen verify add-node-to-lxd-cluster-ubuntu-1604
